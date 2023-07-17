@@ -1,0 +1,24 @@
+.login-background {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(221,232,255,1), rgba(252,253,255,1));
+}
+
+.form-inputs {
+    -fx-border-color: #111;
+    -fx-prompt-text-fill: #111;
+}
+
+.my-button {
+    -fx-background-color: #00a6fb;
+    -fx-text-fill: #fff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.close-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: handle;
+}
+
+.close-btn:hover {
+    -fx-background-color: #f43f57;
+}
