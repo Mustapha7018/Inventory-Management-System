@@ -1,14 +1,563 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.inventorymanagementsystem.Dashboard"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.inventorymanagementsystem.DashboardController">
+   <children>
+      <AnchorPane fx:id="dashboard_form" prefHeight="600.0" prefWidth="1100.0" styleClass="dashboard-background" stylesheets="@dashboard.css">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0">
+               <top>
+                  <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="30.0" prefWidth="1100.0" styleClass="first-nav" stylesheets="@dashboard.css">
+                           <children>
+                              <FontAwesomeIcon fill="#344767" glyphName="ARCHIVE" layoutX="14.0" layoutY="21.0" size="1.2em" />
+                              <Label layoutX="44.0" layoutY="8.0" text="Welcome Back!" textFill="#344767" />
+                              <FontAwesomeIcon fill="#344767" glyphName="USER" layoutX="1053.0" layoutY="20.0" size="1.5em" />
+                              <Label layoutX="1006.0" layoutY="7.0" text="adams" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="dashboardBtn" layoutY="-3.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Dashboard" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="addgoodBtn" layoutY="47.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Add Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="29.0" layoutY="28.0" size="1.5em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="29.0" layoutY="78.0" size="1.5em" />
+                        <Button fx:id="issuegoodBtn" layoutY="97.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Issued Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="27.0" layoutY="127.0" size="1.5em" />
+                        <Button fx:id="signoutBtn" layoutY="476.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Sign Out" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="507.0" size="1.5em" />
+                        <Button fx:id="viewbillBtn" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Bill" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="26.0" layoutY="173.0" size="1.5em" />
+                        <Button fx:id="viewvendorsBtn" layoutY="193.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Vendors" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="24.0" layoutY="224.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="27.0" layoutY="1.0" prefHeight="154.0" prefWidth="842.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <AnchorPane layoutX="28.0" layoutY="49.0" prefHeight="56.0" prefWidth="254.0" styleClass="small-containers" stylesheets="@dashboard.css">
+                                 <children>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="14.0" layoutY="34.0" size="1.5em" />
+                                    <Label layoutX="39.0" layoutY="19.0" text="Available Goods" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="219.0" layoutY="20.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="295.0" layoutY="49.0" prefHeight="56.0" prefWidth="254.0" styleClass="small-containers" stylesheets="@dashboard.css">
+                                 <children>
+                                    <Label layoutX="43.0" layoutY="20.0" text="Total Bill" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="16.0" layoutY="35.0" size="1.5em" />
+                                    <Label layoutX="214.0" layoutY="20.0" text="0.00" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                              <AnchorPane layoutX="561.0" layoutY="49.0" prefHeight="56.0" prefWidth="254.0" styleClass="small-containers" stylesheets="@dashboard.css">
+                                 <children>
+                                    <Label layoutX="47.0" layoutY="20.0" text="Available Vendors" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="17.0" layoutY="35.0" size="1.5em" />
+                                    <Label layoutX="220.0" layoutY="20.0" text="0" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children></AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="27.0" layoutY="184.0" prefHeight="339.0" prefWidth="842.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <AnchorPane layoutX="33.0" layoutY="45.0" prefHeight="268.0" prefWidth="776.0" styleClass="chart-containers" stylesheets="@dashboard.css">
+                                 <children>
+                                    <LineChart layoutX="-14.0" layoutY="7.0" prefHeight="268.0" prefWidth="776.0" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="7.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </LineChart>
+                                 </children>
+                              </AnchorPane>
+                              <Label layoutX="379.0" layoutY="14.0" text="Bill Analytics" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="add_product_form" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1100.0" styleClass="dashboard-background" stylesheets="@dashboard.css" visible="false">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0">
+               <top>
+                  <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="30.0" prefWidth="1100.0" styleClass="first-nav" stylesheets="@dashboard.css">
+                           <children>
+                              <FontAwesomeIcon fill="#344767" glyphName="ARCHIVE" layoutX="14.0" layoutY="21.0" size="1.2em" />
+                              <Label layoutX="44.0" layoutY="8.0" text="Add Good" textFill="#344767" />
+                              <FontAwesomeIcon fill="#344767" glyphName="USER" layoutX="1053.0" layoutY="20.0" size="1.5em" />
+                              <Label layoutX="1006.0" layoutY="7.0" text="adams" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="dashboardBtn1" layoutY="-3.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Dashboard" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="addgoodBtn1" layoutY="47.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Add Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="29.0" layoutY="28.0" size="1.5em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="29.0" layoutY="78.0" size="1.5em" />
+                        <Button fx:id="issuegoodBtn1" layoutY="97.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Issued Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="27.0" layoutY="127.0" size="1.5em" />
+                        <Button fx:id="signoutBtn1" layoutY="476.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Sign Out" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="507.0" size="1.5em" />
+                        <Button fx:id="viewgoodBtn1" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Bill" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="26.0" layoutY="173.0" size="1.5em" />
+                        <Button fx:id="viewbillBtn1" layoutY="193.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Vendors" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="24.0" layoutY="224.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="28.0" prefHeight="531.0" prefWidth="266.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <Label layoutX="83.0" layoutY="26.0" text="Add Product" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="33.0" layoutY="92.0" prefHeight="32.0" prefWidth="207.0" promptText="Product ID:" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <TextField layoutX="33.0" layoutY="145.0" prefHeight="32.0" prefWidth="207.0" promptText="Product Name:" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <ComboBox layoutX="33.0" layoutY="258.0" prefHeight="32.0" prefWidth="207.0" promptText="Choose category" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <TextField layoutX="33.0" layoutY="199.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <Button layoutX="30.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button1" stylesheets="@dashboard.css" text="Add" textFill="#fcfcfc" />
+                              <Button layoutX="31.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button2" text="Update" textFill="WHITE" />
+                              <Button layoutX="31.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button3" text="Delete" textFill="WHITE" />
+                              <Button layoutX="31.0" layoutY="491.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button4" text="Reset" textFill="WHITE" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="322.0" prefHeight="531.0" prefWidth="549.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <TableView layoutX="33.0" layoutY="69.0" prefHeight="436.0" prefWidth="485.0">
+                                <columns>
+                                  <TableColumn prefWidth="91.0" text="PRODUCT ID" />
+                                  <TableColumn prefWidth="108.3333740234375" text="PRODUCT NAME" />
+                                    <TableColumn prefWidth="108.3333740234375" text="PRICE TAG" />
+                                    <TableColumn prefWidth="174.3333740234375" text="CATEGORY" />
+                                </columns>
+                              </TableView>
+                              <TextField layoutX="33.0" layoutY="28.0" prefHeight="28.0" prefWidth="311.0" promptText="Search table..." styleClass="product-form" />
+                              <FontAwesomeIcon glyphName="SEARCH" layoutX="316.0" layoutY="46.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="add_product_form1" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1100.0" styleClass="dashboard-background" stylesheets="@dashboard.css" visible="false">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0">
+               <top>
+                  <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="30.0" prefWidth="1100.0" styleClass="first-nav" stylesheets="@dashboard.css">
+                           <children>
+                              <FontAwesomeIcon fill="#344767" glyphName="ARCHIVE" layoutX="14.0" layoutY="21.0" size="1.2em" />
+                              <Label layoutX="44.0" layoutY="8.0" text="Issue Good" textFill="#344767" />
+                              <FontAwesomeIcon fill="#344767" glyphName="USER" layoutX="1053.0" layoutY="20.0" size="1.5em" />
+                              <Label layoutX="1006.0" layoutY="7.0" text="adams" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="dashboardBtn11" layoutY="-3.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Dashboard" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="addgoodBtn11" layoutY="47.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Add Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="29.0" layoutY="28.0" size="1.5em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="29.0" layoutY="78.0" size="1.5em" />
+                        <Button fx:id="issuegoodBtn11" layoutY="97.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Issued Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="27.0" layoutY="127.0" size="1.5em" />
+                        <Button fx:id="signoutBtn11" layoutY="476.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Sign Out" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="507.0" size="1.5em" />
+                        <Button fx:id="viewgoodBtn11" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Bill" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="26.0" layoutY="173.0" size="1.5em" />
+                        <Button fx:id="viewbillBtn11" layoutY="193.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Vendors" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="24.0" layoutY="224.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="28.0" prefHeight="531.0" prefWidth="266.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <Label layoutX="83.0" layoutY="26.0" text="Issue Good" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="33.0" layoutY="313.0" prefHeight="32.0" prefWidth="207.0" promptText="Product ID:" styleClass="product-form" stylesheets="@dashboard.css" text="Total:" />
+                              <ComboBox layoutX="30.0" layoutY="86.0" prefHeight="32.0" prefWidth="207.0" promptText="Choose Category" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <TextField layoutX="33.0" layoutY="250.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" text="Amount" />
+                              <Button layoutX="30.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button1" stylesheets="@dashboard.css" text="Issue" textFill="#fcfcfc" />
+                              <Button layoutX="31.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button2" text="View" textFill="WHITE" />
+                              <Button layoutX="31.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button3" text="Delete" textFill="WHITE" />
+                              <Button layoutX="31.0" layoutY="491.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button4" text="Receipt" textFill="WHITE" />
+                              <ComboBox layoutX="30.0" layoutY="141.0" prefHeight="32.0" prefWidth="207.0" promptText="Choose Name" styleClass="product-form" stylesheets="@dashboard.css" />
+                              <Spinner layoutX="30.0" layoutY="196.0" prefHeight="32.0" prefWidth="207.0" styleClass="product-form" />
+                              <Label layoutX="37.0" layoutY="204.0" text="Quantity" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="322.0" prefHeight="531.0" prefWidth="549.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <TableView layoutX="33.0" layoutY="69.0" prefHeight="436.0" prefWidth="485.0">
+                                 <columns>
+                                    <TableColumn prefWidth="91.0" text="CATEGORY" />
+                                    <TableColumn prefWidth="108.3333740234375" text="NAME" />
+                                    <TableColumn prefWidth="108.3333740234375" text="QUANTITY" />
+                                    <TableColumn prefWidth="174.3333740234375" text="RECEIPT" />
+                                 </columns>
+                              </TableView>
+                              <TextField layoutX="33.0" layoutY="28.0" prefHeight="28.0" prefWidth="311.0" promptText="Search table..." styleClass="product-form" />
+                              <FontAwesomeIcon glyphName="SEARCH" layoutX="316.0" layoutY="46.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="add_product_form11" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1100.0" styleClass="dashboard-background" stylesheets="@dashboard.css" visible="false">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0">
+               <top>
+                  <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="30.0" prefWidth="1100.0" styleClass="first-nav" stylesheets="@dashboard.css">
+                           <children>
+                              <FontAwesomeIcon fill="#344767" glyphName="ARCHIVE" layoutX="14.0" layoutY="21.0" size="1.2em" />
+                              <Label layoutX="44.0" layoutY="8.0" text="View Bill" textFill="#344767" />
+                              <FontAwesomeIcon fill="#344767" glyphName="USER" layoutX="1053.0" layoutY="20.0" size="1.5em" />
+                              <Label layoutX="1006.0" layoutY="7.0" text="adams" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="dashboardBtn111" layoutY="-3.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Dashboard" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="addgoodBtn111" layoutY="47.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Add Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="29.0" layoutY="28.0" size="1.5em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="29.0" layoutY="78.0" size="1.5em" />
+                        <Button fx:id="issuegoodBtn111" layoutY="97.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Issued Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="27.0" layoutY="127.0" size="1.5em" />
+                        <Button fx:id="signoutBtn111" layoutY="476.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Sign Out" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="507.0" size="1.5em" />
+                        <Button fx:id="viewgoodBtn111" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Bill" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="26.0" layoutY="173.0" size="1.5em" />
+                        <Button fx:id="viewbillBtn111" layoutY="193.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Vendors" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="24.0" layoutY="224.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="25.0" prefHeight="531.0" prefWidth="850.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <TableView layoutX="33.0" layoutY="69.0" prefHeight="378.0" prefWidth="785.0">
+                                 <columns>
+                                    <TableColumn prefWidth="151.0" text="PRODUCT ID" />
+                                    <TableColumn prefWidth="219.0" text="PRODUCT NAME" />
+                                    <TableColumn prefWidth="190.0" text="VENDOR" />
+                                    <TableColumn prefWidth="224.0" text="QUANTITY SOLD" />
+                                 </columns>
+                              </TableView>
+                              <TextField layoutX="33.0" layoutY="28.0" prefHeight="28.0" prefWidth="311.0" promptText="Search table..." styleClass="product-form" />
+                              <FontAwesomeIcon glyphName="SEARCH" layoutX="316.0" layoutY="46.0" />
+                              <Label layoutX="39.0" layoutY="476.0" text="TOTAL: 0.00" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="add_product_form111" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1100.0" styleClass="dashboard-background" stylesheets="@dashboard.css" visible="false">
+         <children>
+            <BorderPane prefHeight="600.0" prefWidth="1100.0">
+               <top>
+                  <AnchorPane prefHeight="50.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutY="-1.0" prefHeight="30.0" prefWidth="1100.0" styleClass="first-nav" stylesheets="@dashboard.css">
+                           <children>
+                              <FontAwesomeIcon fill="#344767" glyphName="ARCHIVE" layoutX="14.0" layoutY="21.0" size="1.2em" />
+                              <Label layoutX="44.0" layoutY="8.0" text="View Vendors" textFill="#344767" />
+                              <FontAwesomeIcon fill="#344767" glyphName="USER" layoutX="1053.0" layoutY="20.0" size="1.5em" />
+                              <Label layoutX="1006.0" layoutY="7.0" text="adams" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="side-bar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="dashboardBtn1111" layoutY="-3.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Dashboard" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="addgoodBtn1111" layoutY="47.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Add Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="29.0" layoutY="28.0" size="1.5em" />
+                        <FontAwesomeIcon fill="WHITE" glyphName="PLUS" layoutX="29.0" layoutY="78.0" size="1.5em" />
+                        <Button fx:id="issuegoodBtn1111" layoutY="97.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Issued Good" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="CUBE" layoutX="27.0" layoutY="127.0" size="1.5em" />
+                        <Button fx:id="signoutBtn1111" layoutY="476.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="Sign Out" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="507.0" size="1.5em" />
+                        <Button fx:id="viewgoodBtn1111" layoutY="142.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Bill" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="26.0" layoutY="173.0" size="1.5em" />
+                        <Button fx:id="viewbillBtn1111" layoutY="193.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="201.0" styleClass="nav-buttons" stylesheets="@dashboard.css" text="View Vendors" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="24.0" layoutY="224.0" size="1.5em" />
+                     </children>
+                  </AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="28.0" prefHeight="531.0" prefWidth="266.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <Label layoutX="74.0" layoutY="26.0" text="View Vendors" textFill="#344767">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <TextField layoutX="33.0" layoutY="79.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" text="Vendor ID" />
+                              <Button layoutX="30.0" layoutY="383.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button1" stylesheets="@dashboard.css" text="Add Vendor" textFill="#fcfcfc" />
+                              <Button layoutX="31.0" layoutY="419.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button2" text="Update Vendor" textFill="WHITE" />
+                              <Button layoutX="31.0" layoutY="456.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="button3" text="Remove Vendor" textFill="WHITE" />
+                              <TextField layoutX="33.0" layoutY="133.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" text="Vendor Name" />
+                              <TextField layoutX="33.0" layoutY="184.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" text="Location" />
+                              <TextField layoutX="33.0" layoutY="234.0" prefHeight="32.0" prefWidth="207.0" promptText="Price Tag:" styleClass="product-form" stylesheets="@dashboard.css" text="Good Supplied" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="322.0" prefHeight="531.0" prefWidth="549.0" styleClass="containers" stylesheets="@dashboard.css">
+                           <children>
+                              <TableView layoutX="33.0" layoutY="69.0" prefHeight="436.0" prefWidth="485.0">
+                                 <columns>
+                                    <TableColumn prefWidth="91.0" text="VENDOR ID" />
+                                    <TableColumn prefWidth="108.3333740234375" text="VENDOR NAME" />
+                                    <TableColumn prefWidth="108.3333740234375" text="LOCATION" />
+                                    <TableColumn prefWidth="175.0" text="GOOD TYPE SPD" />
+                                 </columns>
+                              </TableView>
+                              <TextField layoutX="33.0" layoutY="28.0" prefHeight="28.0" prefWidth="311.0" promptText="Search table..." styleClass="product-form" />
+                              <FontAwesomeIcon glyphName="SEARCH" layoutX="316.0" layoutY="46.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

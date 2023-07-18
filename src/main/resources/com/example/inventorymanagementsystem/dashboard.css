@@ -1,0 +1,82 @@
+.dashboard-background {
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgba(221,232,255,1), rgba(252,253,255,1));
+}
+
+.first-nav {
+    -fx-background-color: #BBDEFB;
+    -fx-text-fill: #344767;
+}
+
+.side-bar {
+    -fx-background-color: #344767;
+
+}
+
+.nav-buttons {
+    -fx-background-color: transparent;
+    -fx-font-weight: bold;
+}
+
+.nav-buttons:hover {
+    -fx-background-color: #BBDEFB;
+    -fx-cursor: hand;
+    -fx-text-fill: #344767;
+    -fx-graphic-fill: #344767;
+}
+
+.containers {
+    -fx-background-color: #BBDEFB;
+    -fx-background-radius: 7px
+}
+
+.small-containers {
+    -fx-background-color: #344767;
+    -fx-background-radius: 7px
+}
+
+.chart-containers {
+    -fx-background-color: #344767;
+    -fx-background-radius: 7px
+}
+
+.product-form {
+    -fx-background-color: #fff;
+    -fx-border-color: #344767;
+    -fx-background-radius: 7px
+    -fx-prompt-text-fill: #344767;
+}
+
+.product-form .text-field {
+    -fx-prompt-text-fill: #344767;
+}
+
+.button1 {
+    -fx-background-color: #82D643;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button2 {
+    -fx-background-color: #0496FF;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+
+.button3 {
+    -fx-background-color: #EA064E;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.button4 {
+    -fx-background-color: #344767;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+}
+
+.column-header .label {
+    -fx-background-color: #344767;
+    -fx-text-fill: #fff;
+}
+
